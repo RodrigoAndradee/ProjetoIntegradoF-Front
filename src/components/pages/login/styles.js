@@ -11,8 +11,8 @@ const rightSideLogin = {
     width: "30%",
     display: "flex",
     flexDirection: "column",
-    alignItens: "center",
-    justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "center"
 }
 
 const loginCard = {
@@ -20,7 +20,6 @@ const loginCard = {
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "#EEEEEE", 
-    borderRadius: "20px",
     borderRadius: "20px",
     width: "70%",
     height: "50%",
@@ -33,4 +32,19 @@ const styleIcon = {
     color:"#CDCDCD",
 }
 
-export default {leftSideLogin, rightSideLogin, loginCard, styleIcon};
+const textField ={
+    width: "80%",
+    marginBottom: "20px",
+    marginTop: "20px"
+}
+
+const buttonStyle = {
+    backgroundColor: "#054F77",
+    color: "white",
+    width:"100px",
+    borderRadius:"20px",
+    marginBottom: "20px",
+    marginTop: "60px"
+}
+
+export default {leftSideLogin, rightSideLogin, loginCard, styleIcon, textField, buttonStyle};

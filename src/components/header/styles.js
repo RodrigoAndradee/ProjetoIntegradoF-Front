@@ -2,22 +2,22 @@
 const headerStyle = {
     width: "100%",
     height: "60px",
-    backgroundColor:"#558BAE",
-    justifyContent: "center",
-    alignItens : "center"
+    backgroundColor: "#558BAE",
 }
 
 const textField = {
-    marginBottom:"20px", 
+    marginBottom: "20px",
     width: "80%",
 }
 
 const buttonStyle = {
-    backgroundColor:"transparent",
-    width:"200px",
-    color:"white",
+    backgroundColor: "transparent",
+    width: "290px",
+    height: "60px",
+    color: "white",
     float: "left",
-    marginLeft :"30px"
+    marginLeft: "10px",
+    fontSize: "18px"
 }
 
-export default {headerStyle, textField, buttonStyle};
+export default { headerStyle, textField, buttonStyle };
