@@ -1,8 +1,14 @@
 const homeScreen = {
-    backgroundColor: "green",
-    width: "100%",
-    padding: "0px, 20px, 0px, 20px",
-    margin: "0px, 20px, 0px, 20px",
+    marginLeft: "50px",
+    marginRight: "50px",
+    display: "flex",
+    paddingLeft: "50px"
 }
 
-export default { homeScreen }
+const deviderStyle = {
+    marginLeft: "50px",
+    marginRight: "50px",
+
+}
+
+export default { homeScreen, deviderStyle }

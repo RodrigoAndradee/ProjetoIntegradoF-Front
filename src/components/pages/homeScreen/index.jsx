@@ -1,21 +1,24 @@
 import React from "react";
 
 import Box from '@material-ui/core/Box';
+import Divider from '@material-ui/core/Divider';
 
-import Header from '../../header'
+import Header from '../../header';
 
 import Styles from "./styles";
 
 export default function homeScreen() {
     return (
-        <Box style={Styles.homeScreen}>
-
+        <>
             <Header />
 
-            <h1>Bem-vindo, Rodrigo Andrade</h1>
+            <Box style={Styles.homeScreen}>
 
-            <span />
+                <h1>Bem-vindo, Rodrigo Andrade!</h1>
 
-        </Box>
+            </Box>
+
+            <Divider style={Styles.deviderStyle} />
+        </>
     )
 }
