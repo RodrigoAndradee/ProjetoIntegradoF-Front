@@ -14,11 +14,13 @@ class MultipleChoice extends React.Component {
     handleChangeTitle(event) {
         console.log(event.target.value)
     }
+
     render() {
         return (
             <Box>
                 <Card style={Styles.multipleChoiceCard}>
 
+                    {this.props.questionId}
                     <TextField
                         label="Título da Pergunta"
                         type="text"
