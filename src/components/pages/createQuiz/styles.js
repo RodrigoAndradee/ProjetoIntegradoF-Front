@@ -19,7 +19,7 @@ const cardQuiz = {
 const cardButtons = {
     margin: "30px 10px 30px 10px",
     width: "30%",
-    height: "300px",
+    // height: "auto",
     // display: "flex",
     flexDirection: "column",
 
@@ -29,8 +29,9 @@ const creteButton = {
     backgroundColor: "#558BAE",
     textDecoration: "none",
     color: "white",
-    width: "200px",
-    height: "100px"
+    width: "100%",
+    height: "100px",
+    marginBottom: "10px"
 }
 
 const formTitle = {

@@ -47,11 +47,11 @@ export default () => {
 
     }
 
-    const renderQuestions = () => <ol>
+    const renderQuestions = () => <>
         {
             questionToRender.map(questions => <div>{questions}</div>)
         }
-    </ol>
+    </>
 
     return (
         <>

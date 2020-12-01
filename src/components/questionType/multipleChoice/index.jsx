@@ -1,42 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 
-import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
-import TextField from '@material-ui/core/TextField';
+import { Box, Card, Button, TextField } from '@material-ui/core/';
 
 import Styles from "./styles";
 
-class MultipleChoice extends React.Component {
-    constructor(props) {
-        super(props);
+export default ({ questionId }) => {
+
+    const [choices, setChoices] = useState([]);
+
+    function handleChangeTitle(event) {
+        this.setState({
+            question: event.target.value
+        })
     }
 
-    handleChangeTitle(event) {
-        console.log(event.target.value)
+    function handleChange(event) {
+
     }
 
-    render() {
-        return (
-            <Box>
-                <Card style={Styles.multipleChoiceCard}>
-
-                    {this.props.questionId}
-                    <TextField
-                        label="Título da Pergunta"
-                        type="text"
-                        style={Styles.textField}
-                        variant="filled"
-                        onChange={this.handleChangeTitle}
-                    />
-
-
-
-
-
-                </Card>
-            </Box>
-        )
+    function addQuestion() {
+        // choices.push("teste")
+        setChoices(...choices, 'teste')
+        // this.setState({
+        //     choices: [...this.state.choices, {
+        //         text: '',
+        //     }],
+        // })
     }
+
+    return (
+        <Box>
+            <Card style={Styles.multipleChoiceCard}>
+
+                <TextField
+                    label="Título da Pergunta"
+                    type="text"
+                    variant="filled"
+                    onChange={handleChangeTitle}
+                />
+
+                <Box>
+                    {
+                        choices.map(choices =>
+                            <Box>
+                                <Button> Remove </Button>
+
+                                <TextField
+                                    label="Digite sua alternativa"
+                                    type="text"
+                                    // variant="filled"
+                                    onChange={handleChange}
+                                />
+                            </Box>
+                        )
+                    }
+                </Box>
+
+                <Box onClick={addQuestion}>
+                    Clique aqui para adicionar alternativas
+                </Box>
+
+            </Card>
+        </Box>
+    )
 }
-
-export default MultipleChoice;

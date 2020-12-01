@@ -1,11 +1,9 @@
 const multipleChoiceCard = {
-    width: "400px",
-    height: "300px",
-    backgroundColor: "#EAEAEA"
-}
-
-const textField = {
+    minHeight: "200px",
+    backgroundColor: "#EAEAEA",
+    marginBottom: "20px",
     borderRadius: "30px"
 }
 
-export default { multipleChoiceCard, textField }
+
+export default { multipleChoiceCard }
