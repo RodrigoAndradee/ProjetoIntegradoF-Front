@@ -1,10 +1,7 @@
 import React from "react";
 
-import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
-import TextField from '@material-ui/core/TextField';
+import { Box, Card, TextField, Button } from '@material-ui/core/';
 import UserIcon from '@material-ui/icons/SupervisedUserCircle';
-import Button from '@material-ui/core/Button';
 
 import Styles from "./styles";
 
