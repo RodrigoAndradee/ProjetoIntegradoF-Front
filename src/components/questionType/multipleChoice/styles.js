@@ -1,9 +1,39 @@
 const multipleChoiceCard = {
-    minHeight: "200px",
-    backgroundColor: "#EAEAEA",
-    marginBottom: "20px",
-    borderRadius: "30px"
-}
+  backgroundColor: "#EAEAEA",
+  marginBottom: "20px",
+};
 
+const multipleChoiceContainer = {
+  padding: "10px",
+  alignItems: "center",
+  display: "flex",
+};
 
-export default { multipleChoiceCard }
+const multipleChoiceTitle = {
+  marginLeft: "10px",
+};
+
+const textField = {
+  width: "80%",
+  marginBottom: "20px",
+  marginTop: "20px",
+};
+
+const textFieldChoice = {
+  width: "40%",
+};
+
+const addQuestionButton = {
+  display: "flex",
+  alignItems: "center",
+  paddingLeft: "10px",
+};
+
+export default {
+  multipleChoiceCard,
+  multipleChoiceContainer,
+  multipleChoiceTitle,
+  textField,
+  textFieldChoice,
+  addQuestionButton,
+};

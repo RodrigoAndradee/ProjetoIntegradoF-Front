@@ -1,60 +1,159 @@
 import React, { useState } from "react";
 
-import { Box, Card, Button, TextField } from '@material-ui/core/';
+import {
+  Box,
+  Card,
+  Button,
+  TextField,
+  Divider,
+  Checkbox,
+} from "@material-ui/core/";
+
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 import Styles from "./styles";
 
-export default ({ questionId }) => {
+class multipleChoice extends React.Component {
+  constructor(props) {
+    super(props);
 
-    const [choices,setChoices] = useState([]);
-    const [choicesToRender, setChoicesToRender] = useState(0);
+    this.state = {
+      showMenu: false,
+      questionId: this.props.questionId,
+      question: "",
+      type: "multiplechoice",
+      required: false,
+      choices: [{}],
+    };
 
-    function handleChangeTitle(event) {
-        this.setState({
-            question: event.target.value
-        })
+    this.showMenu = this.showMenu.bind(this);
+    this.addQuestion = this.addQuestion.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleTitle = this.handleTitle.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
+    this.generateJson = this.generateJson.bind(this);
+    this.removeEntireQuestion = this.removeEntireQuestion.bind(this);
+  }
+
+  showMenu(event) {
+    event.preventDefault();
+    if (this.state.showMenu == true) {
+      this.setState({
+        showMenu: false,
+      });
+    } else {
+      this.setState({
+        showMenu: true,
+      });
     }
+  }
 
-    function handleChange(event) {
+  addQuestion() {
+    this.setState({
+      choices: [
+        ...this.state.choices,
+        {
+          text: "",
+        },
+      ],
+    });
+  }
 
+  removeQuestion(component) {
+    this.setState({
+      choices: this.state.choices.filter((item) => item !== component),
+    });
+  }
+
+  handleChange(event, componentID) {
+    let text = event.target.value;
+    let array = this.state.choices;
+
+    array[componentID].text = text;
+
+    this.setState({
+      questions: array,
+    });
+  }
+
+  handleTitle(event) {
+    let title = event.target.value;
+
+    this.setState({
+      question: title,
+    });
+  }
+
+  handleCheck(event) {
+    let check = event.target.checked;
+
+    this.setState({
+      required: check,
+    });
+  }
+
+  generateJson() {
+    let question = this.state.question;
+    let type = this.state.type;
+    let choices = this.state.choices;
+    let questionId = this.state.questionId;
+    let required = this.state.required;
+
+    let json = { question, type, required, choices, questionId };
+    return json;
+  }
+
+  removeEntireQuestion() {
+    {
+      this.props.removeQuestion(this.state.questionId);
     }
+  }
 
-    function addQuestion() {
-
-        setChoices(...choices, questionId)
-
-        console.log(choices)
-
-    }
-
+  render() {
     return (
-        <Box>
-            <Card style={Styles.multipleChoiceCard}>
-
-                <TextField
-                    label="Título da Pergunta"
-                    type="text"
-                    variant="filled"
-                    onChange={handleChangeTitle}
-                />
-                
-                    {
-                        choices.map((c) => 
-                            < div className="question-component" >
-                                {/* <button onClick={(e) => removeQuestion(componentes)} className="remove-alternative" title="excluir"></button>
-                                <input type="radio" id="my_textbox" />
-                                <input type="text" placeholder="Digite sua opção" onChange={(e) => handleChange(e, index)} /> */}
-                                <a>{c}</a> 
-                                OLAtr   
-                            </div>
-                        )
-                    }
-                    
-                <Box onClick={addQuestion}>
-                    Clique aqui para adicionar alternativas
-                </Box>
-
-            </Card>
+      <Card style={Styles.multipleChoiceCard}>
+        <Box style={Styles.multipleChoiceTitle}>
+          <TextField
+            label="Título da Pergunta"
+            type="text"
+            onChange={(e) => this.handleTitle(e)}
+            style={Styles.textField}
+          />
         </Box>
-    )
+
+        <Divider />
+
+        <Box>
+          <>
+            {this.state.choices.map((componentes, index) => (
+              <>
+                <Box style={Styles.multipleChoiceContainer}>
+                  <Checkbox key={index} />
+                  <TextField
+                    label="Digite sua opção"
+                    type="text"
+                    onChange={(e) => this.handleChange(e, index)}
+                    key={index}
+                    style={Styles.textFieldChoice}
+                  />
+                  <DeleteForeverIcon
+                    onClick={(e) => this.removeQuestion(componentes)}
+                    key={index}
+                  />
+                </Box>
+                <Divider key={index} />
+              </>
+            ))}
+
+            <Box onClick={this.addQuestion} style={Styles.addQuestionButton}>
+              <AddCircleIcon />
+              <h5>Clique para adicionar alternativa</h5>
+            </Box>
+          </>
+        </Box>
+      </Card>
+    );
+  }
 }
+export default multipleChoice;
