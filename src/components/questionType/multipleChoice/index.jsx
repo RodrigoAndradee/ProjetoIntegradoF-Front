@@ -1,13 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-import {
-  Box,
-  Card,
-  Button,
-  TextField,
-  Divider,
-  Checkbox,
-} from "@material-ui/core/";
+import { Box, Card, TextField, Divider, Checkbox } from "@material-ui/core/";
 
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
@@ -19,44 +12,24 @@ class multipleChoice extends React.Component {
     super(props);
 
     this.state = {
-      showMenu: false,
       questionId: this.props.questionId,
-      question: "",
+      title: "",
       type: "multiplechoice",
       required: false,
       choices: [{}],
     };
 
-    this.showMenu = this.showMenu.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleTitle = this.handleTitle.bind(this);
-    this.handleCheck = this.handleCheck.bind(this);
+
     this.generateJson = this.generateJson.bind(this);
     this.removeEntireQuestion = this.removeEntireQuestion.bind(this);
   }
 
-  showMenu(event) {
-    event.preventDefault();
-    if (this.state.showMenu == true) {
-      this.setState({
-        showMenu: false,
-      });
-    } else {
-      this.setState({
-        showMenu: true,
-      });
-    }
-  }
-
   addQuestion() {
     this.setState({
-      choices: [
-        ...this.state.choices,
-        {
-          text: "",
-        },
-      ],
+      choices: [...this.state.choices, ""],
     });
   }
 
@@ -70,44 +43,34 @@ class multipleChoice extends React.Component {
     let text = event.target.value;
     let array = this.state.choices;
 
-    array[componentID].text = text;
+    array[componentID] = text;
 
     this.setState({
-      questions: array,
+      choices: array,
     });
   }
 
   handleTitle(event) {
-    let title = event.target.value;
-
+    let titlee = event.target.value;
     this.setState({
-      question: title,
+      title: titlee,
     });
-  }
-
-  handleCheck(event) {
-    let check = event.target.checked;
-
-    this.setState({
-      required: check,
-    });
+    this.generateJson();
   }
 
   generateJson() {
-    let question = this.state.question;
+    let title = this.state.title;
     let type = this.state.type;
     let choices = this.state.choices;
     let questionId = this.state.questionId;
     let required = this.state.required;
 
-    let json = { question, type, required, choices, questionId };
+    let json = { title, type, required, choices, questionId };
     return json;
   }
 
   removeEntireQuestion() {
-    {
-      this.props.removeQuestion(this.state.questionId);
-    }
+    this.props.removeQuestion(this.state.questionId);
   }
 
   render() {
@@ -119,6 +82,7 @@ class multipleChoice extends React.Component {
             type="text"
             onChange={(e) => this.handleTitle(e)}
             style={Styles.textField}
+            key={this.props.questionId}
           />
         </Box>
 
@@ -152,6 +116,7 @@ class multipleChoice extends React.Component {
             </Box>
           </>
         </Box>
+        {this.props.sendJson(this.generateJson())}
       </Card>
     );
   }

@@ -9,7 +9,8 @@ import axios from "axios";
 import Styles from "./styles";
 
 export default function Login() {
-  const [isLoged, setIsLoged] = useState(false);
+  // const [isLoged, setIsLoged] = useState(false);
+  // const [canLog, setCanLog] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,16 +18,12 @@ export default function Login() {
   const history = useHistory();
 
   const verifyLogin = () => {
-    console.log("EMAIL", email);
-    console.log("SENHA", password);
-
     axios
       .post(URL + "/login", {
         email,
         password,
       })
       .then(function (response) {
-        setIsLoged(true);
         history.push("/home");
       })
       .catch(function (error) {
@@ -39,9 +36,16 @@ export default function Login() {
   };
 
   const handleEmail = (e) => {
-    //   console.log(e.target.value)
     setEmail(e.target.value);
   };
+
+  // const canLogin = () => {
+  //   console.log("entrou");
+  //   if (email && password) {
+  //     console.log("liberou senha");
+  //     setCanLog(false);
+  //   }
+  // };
 
   return (
     <>
@@ -64,6 +68,8 @@ export default function Login() {
             style={Styles.textField}
             onChange={handlePassword}
           />
+
+          {/* {canLogin()} */}
 
           <Button style={Styles.buttonStyle} onClick={verifyLogin}>
             Logar

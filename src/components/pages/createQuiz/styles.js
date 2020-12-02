@@ -20,6 +20,7 @@ const cardButtons = {
   margin: "30px 10px 30px 10px",
   width: "25%",
   flexDirection: "column",
+  display: "flex",
 };
 
 const creteButton = {
@@ -31,6 +32,14 @@ const creteButton = {
   marginBottom: "10px",
 };
 
+const sendButtom = {
+  backgroundColor: "#558BAE",
+  textDecoration: "none",
+  color: "white",
+  width: "100%",
+  bottom: 0,
+};
+
 const formTitle = {
   flexDirection: "column",
   display: "flex",
@@ -40,7 +49,6 @@ const formTitle = {
 
 const formContent = {
   margin: "10px 20px 0px 20px",
-  // backgroundColor: "yellow",
   height: "80%",
   overflow: "auto",
 };
@@ -53,4 +61,5 @@ export default {
   creteButton,
   formTitle,
   formContent,
+  sendButtom,
 };
