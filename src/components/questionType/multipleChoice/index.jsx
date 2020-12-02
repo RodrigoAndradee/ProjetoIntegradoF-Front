@@ -6,7 +6,8 @@ import Styles from "./styles";
 
 export default ({ questionId }) => {
 
-    const [choices, setChoices] = useState([]);
+    const [choices,setChoices] = useState([]);
+    const [choicesToRender, setChoicesToRender] = useState(0);
 
     function handleChangeTitle(event) {
         this.setState({
@@ -19,13 +20,11 @@ export default ({ questionId }) => {
     }
 
     function addQuestion() {
-        // choices.push("teste")
-        setChoices(...choices, 'teste')
-        // this.setState({
-        //     choices: [...this.state.choices, {
-        //         text: '',
-        //     }],
-        // })
+
+        setChoices(...choices, questionId)
+
+        console.log(choices)
+
     }
 
     return (
@@ -38,24 +37,19 @@ export default ({ questionId }) => {
                     variant="filled"
                     onChange={handleChangeTitle}
                 />
-
-                <Box>
+                
                     {
-                        choices.map(choices =>
-                            <Box>
-                                <Button> Remove </Button>
-
-                                <TextField
-                                    label="Digite sua alternativa"
-                                    type="text"
-                                    // variant="filled"
-                                    onChange={handleChange}
-                                />
-                            </Box>
+                        choices.map((c) => 
+                            < div className="question-component" >
+                                {/* <button onClick={(e) => removeQuestion(componentes)} className="remove-alternative" title="excluir"></button>
+                                <input type="radio" id="my_textbox" />
+                                <input type="text" placeholder="Digite sua opção" onChange={(e) => handleChange(e, index)} /> */}
+                                <a>{c}</a> 
+                                OLAtr   
+                            </div>
                         )
                     }
-                </Box>
-
+                    
                 <Box onClick={addQuestion}>
                     Clique aqui para adicionar alternativas
                 </Box>

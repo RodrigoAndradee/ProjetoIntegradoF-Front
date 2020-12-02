@@ -35,8 +35,6 @@ export default () => {
 
         const typeOf = getComponent[typeQuestion]
 
-        console.log(typeQuestion)
-
         setQuestionToRender(questionToRender.concat(typeOf))
         setQuestionId(questionId + 1)
         setShowHint(false)
