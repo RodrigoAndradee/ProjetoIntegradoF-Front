@@ -9,4 +9,8 @@ const deviderStyle = {
   marginRight: "50px",
 };
 
-export default { homeScreen, deviderStyle };
+const boxIframe = {
+  padding: "60px"
+}
+
+export default { homeScreen, deviderStyle,boxIframe };

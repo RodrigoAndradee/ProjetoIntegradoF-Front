@@ -7,10 +7,13 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import Styles from "./styles";
+import Alert from "@material-ui/lab/Alert";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fail, setFail] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   const URL = "http://localhost:3000";
   const history = useHistory();
@@ -22,16 +25,22 @@ export default function Login() {
         password,
       })
       .then(function (response) {
+        setSuccess(true);
         let decode = JSON.stringify(response.data);
         let a = JSON.parse(decode);
         console.log(a.accessToken);
         console.log(decode);
         localStorage.setItem("token", a.accessToken);
         localStorage.setItem("name", a.name);
-        history.push("/home");
+        setTimeout(() => {
+          setSuccess(false);
+          history.push("/home");
+        }, 1000);
       })
       .catch(function (error) {
         console.log(error);
+        setFail(true)
+        setTimeout(() => setFail(false), 2000);
       });
   };
 
@@ -49,9 +58,13 @@ export default function Login() {
 
   return (
     <>
-      <Box style={Styles.leftSideLogin} />
+      <Box style={Styles.leftSideLogin} >
+        <img style={Styles.img} src={"https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2019/02/7-Melhores-Plugins-de-Formulario-de-Contato-WordPress-.png"} alt={""}/>
+      </Box>
 
       <Box style={Styles.rightSideLogin}>
+
+        <h1 style={Styles.textHeader}> Bem vindo ao Input Form</h1>
         <Card style={Styles.loginCard}>
           <UserIcon style={Styles.styleIcon} />
 
@@ -69,6 +82,7 @@ export default function Login() {
             onChange={handlePassword}
           />
 
+
           {/* {canLogin()} */}
 
           <Button style={Styles.buttonStyle} onClick={verifyLogin}>
@@ -78,6 +92,9 @@ export default function Login() {
           <Button style={Styles.buttonStyle1} onClick={callRegister}>
             Cadastrar
           </Button>
+          {success && <Alert severity="success">This is a success alert — check it out!</Alert>}
+
+          {fail && <Alert severity="error">This is an error alert — check it out!</Alert>}
 
         </Card>
       </Box>

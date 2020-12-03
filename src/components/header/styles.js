@@ -3,7 +3,8 @@ const headerStyle = {
     height: "60px",
     backgroundColor: "#558BAE",
     alignItems: "center",
-    display: "flex"
+    display: "flex",
+    paddingLeft: "30px"
 
 }
 
@@ -14,7 +15,7 @@ const textField = {
 
 const buttonStyle = {
     backgroundColor: "transparent",
-    width: "290px",
+    width: "auto",
     height: "60px",
     color: "white",
     float: "left",

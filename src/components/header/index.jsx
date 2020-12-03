@@ -33,6 +33,7 @@ export default function Header() {
     return (
         <Box style={Styles.headerStyle}>
 
+            <Button style={Styles.buttonStyle} onClick={() => ClickButton("/home")}>Inicio</Button>
             <Button style={Styles.buttonStyle} onClick={() => ClickButton("create-quiz")}>Criar Questionário</Button>
 
             <Button style={Styles.buttonStyle} onClick={() => ClickButton("consult-quiz")}>Visualizar Pesquisa</Button>

@@ -11,10 +11,7 @@ import * as ROUTES from '../src/util/routes';
 import PrivateRoute from "./components/privateRoute";
 
 function App() {
-    window.onunload = () => {
-        // Clear the local storage
-        window.localStorage.clear()
-    }
+
   return (
     <Router>
       <Switch>
