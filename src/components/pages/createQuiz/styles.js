@@ -16,27 +16,41 @@ const cardQuiz = {
   flexDirection: "column",
 };
 
+const buttonBox = {
+  width: "20%",
+  display: "flex",
+  flexDirection: "column",
+};
+
 const cardButtons = {
   margin: "30px 10px 30px 10px",
-  width: "25%",
+  padding: "15px",
   flexDirection: "column",
   display: "flex",
+  height: "180px",
+  justifyContent: "space-between",
 };
 
-const creteButton = {
+const sendCard = {
+  margin: "90px 10px 50px 10px",
+  right: 0,
+  padding: "15px",
+};
+
+const sendButton = {
+  backgroundColor: "#054F77",
+  textDecoration: "none",
+  color: "white",
+  width: "100%",
+  height: "80px",
+};
+
+const createButton = {
   backgroundColor: "#558BAE",
   textDecoration: "none",
   color: "white",
   width: "100%",
-  height: "100px",
-  marginBottom: "10px",
-};
-
-const sendButtom = {
-  backgroundColor: "#558BAE",
-  textDecoration: "none",
-  color: "white",
-  width: "100%",
+  height: "80px",
 };
 
 const formTitle = {
@@ -57,8 +71,10 @@ export default {
   boxCreateQuiz,
   cardButtons,
   cardQuiz,
-  creteButton,
+  createButton,
   formTitle,
   formContent,
-  sendButtom,
+  sendCard,
+  buttonBox,
+  sendButton,
 };

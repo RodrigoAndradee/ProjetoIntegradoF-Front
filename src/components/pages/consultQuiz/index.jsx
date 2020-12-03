@@ -144,13 +144,14 @@ export default function ConsultQuiz() {
 
 
   return (
-    <>
+    <Box>
       {renderTable()}
       <Header />
 
-      <Box style={Styles.homeScreen}>
+      <Box style={Styles.title}>
         <h1>Visualizar Pesquisas</h1>
       </Box>
+<<<<<<< HEAD
       <div style={{ height: 400, width: "100%" }}>
         <DataGrid
             components={{
@@ -162,7 +163,20 @@ export default function ConsultQuiz() {
           checkboxSelection
         />
       </div>
+=======
+
+>>>>>>> commit
       <Divider style={Styles.deviderStyle} />
-    </>
+      <Box style={Styles.consultQuiz}>
+        <Card style={Styles.tableConsultQuiz}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            checkboxSelection
+          />
+        </Card>
+      </Box>
+    </Box>
   );
 }
