@@ -31,6 +31,10 @@ export default function Login() {
       });
   };
 
+  const callRegister = () => {
+          history.push("/cadastro");
+  };
+
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -74,6 +78,11 @@ export default function Login() {
           <Button style={Styles.buttonStyle} onClick={verifyLogin}>
             Logar
           </Button>
+
+          <Button style={Styles.buttonStyle1} onClick={callRegister}>
+            Cadastrar
+          </Button>
+
         </Card>
       </Box>
     </>

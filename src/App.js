@@ -5,6 +5,7 @@ import Login from "./components/pages/login"
 import HomeScreen from "./components/pages/homeScreen"
 import CreateQuiz from "./components/pages/createQuiz/index";
 import ConsultQuiz from "./components/pages/consultQuiz";
+import RegisterScreen from "./components/pages/cadastro";
 
 import * as ROUTES from '../src/util/routes';
 
@@ -17,6 +18,7 @@ function App() {
         <Route path={ROUTES.WELCOME} component={HomeScreen} />
         <Route path={ROUTES.CREATEQUIZ} component={CreateQuiz} />
         <Route path={ROUTES.CONSULTQUIZ} component={ConsultQuiz} />
+        <Route path={ROUTES.REGISTER} component={RegisterScreen} />
 
       </Switch>
     </Router >

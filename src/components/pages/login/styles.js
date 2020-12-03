@@ -22,7 +22,7 @@ const loginCard = {
     backgroundColor: "#EEEEEE", 
     borderRadius: "20px",
     width: "70%",
-    height: "50%",
+    height: "55%",
 }
 
 const styleIcon = {
@@ -43,8 +43,15 @@ const buttonStyle = {
     color: "white",
     width:"100px",
     borderRadius:"20px",
-    marginBottom: "20px",
     marginTop: "60px"
 }
+const buttonStyle1 = {
+    backgroundColor: "#054F77",
+    color: "white",
+    width:"100px",
+    borderRadius:"20px",
+    marginBottom: "20px",
+    marginTop: "10px"
+}
 
-export default {leftSideLogin, rightSideLogin, loginCard, styleIcon, textField, buttonStyle};
+export default {leftSideLogin, rightSideLogin, loginCard, styleIcon, textField, buttonStyle,buttonStyle1};

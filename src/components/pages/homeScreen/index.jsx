@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
@@ -7,14 +7,18 @@ import Header from '../../header';
 
 import Styles from "./styles";
 
-export default function homeScreen() {
+export default function HomeScreen() {
+    const [name,setName] = useState("")
+    useEffect(()=>{
+        setName(localStorage.getItem('name'))
+    })
     return (
         <>
             <Header />
 
             <Box style={Styles.homeScreen}>
 
-                <h1>Bem-vindo, Rodrigo Andrade!</h1>
+                <h1>Bem-vindo, {name}!</h1>
 
             </Box>
 
