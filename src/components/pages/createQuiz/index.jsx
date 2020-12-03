@@ -88,31 +88,25 @@ export default () => {
   );
 
   const sendForm = () => {
-    const form = {
-      title,
-      description,
-      asks: questions,
-      userId: "123",
-      participants: ["rodrigomachado161@gmail.com"],
-      endDate: "22/11/2020",
-      active: true,
-    };
-
-    console.log(form);
+    let token = localStorage.getItem("token");
 
     axios
       .post(URL + "/research", {
         title,
         description,
         asks: questions,
-        userId: "123",
-        participants: ["rodrigomachado161@gmail.com"],
+        userId: token,
+        participants: [
+          "rodrigomachado161@gmail.com",
+          "rodrigo_machado96@hotmail.com",
+          "gabriel.talles00@gmail.com",
+          "nicolaubalbino@gmail.com",
+        ],
         endDate: "22/11/2020",
         active: true,
       })
       .then(function (response) {
-        console.log("Sucesso");
-        history.push("/home");
+        history.push("/consult-quiz");
       })
       .catch(function (error) {
         console.log(error);
@@ -151,25 +145,28 @@ export default () => {
             </Box>
           </Card>
 
-          <Card style={Styles.cardButtons}>
-            <Button
-              style={Styles.creteButton}
-              onClick={() => addQuestion("multipleChoice")}
-            >
-              Multipla Escolha
-            </Button>
+          <Box style={Styles.buttonBox}>
+            <Card style={Styles.cardButtons}>
+              <Button
+                style={Styles.createButton}
+                onClick={() => addQuestion("multipleChoice")}
+              >
+                Multipla Escolha
+              </Button>
 
-            <Button
-              style={Styles.creteButton}
-              onClick={() => addQuestion("text")}
-            >
-              Texto
-            </Button>
-
-            <Button onClick={() => sendForm()} style={Styles.sendButtom}>
-              SEND FORM
-            </Button>
-          </Card>
+              <Button
+                style={Styles.createButton}
+                onClick={() => addQuestion("text")}
+              >
+                Texto
+              </Button>
+            </Card>
+            <Card style={Styles.sendCard}>
+              <Button onClick={() => sendForm()} style={Styles.sendButton}>
+                Enviar Formulário
+              </Button>
+            </Card>
+          </Box>
         </Box>
       </Box>
     </>
