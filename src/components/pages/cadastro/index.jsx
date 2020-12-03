@@ -51,6 +51,7 @@ export default function RegisterScreen() {
                 let decode = JSON.stringify(response.data)
                 let a = JSON.parse(decode)
                 localStorage.setItem('name', a.body.name);
+                localStorage.setItem('token', a.body.accessToken);
                 setTimeout(() => {
                     setSuccess(false);
                     history.push("/home");

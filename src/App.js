@@ -8,17 +8,22 @@ import ConsultQuiz from "./components/pages/consultQuiz";
 import RegisterScreen from "./components/pages/cadastro";
 
 import * as ROUTES from '../src/util/routes';
+import PrivateRoute from "./components/privateRoute";
 
 function App() {
+    window.onunload = () => {
+        // Clear the local storage
+        window.localStorage.clear()
+    }
   return (
     <Router>
       <Switch>
         <Route exact path={ROUTES.SIGN_IN} component={Login} />
-
-        <Route path={ROUTES.WELCOME} component={HomeScreen} />
-        <Route path={ROUTES.CREATEQUIZ} component={CreateQuiz} />
-        <Route path={ROUTES.CONSULTQUIZ} component={ConsultQuiz} />
         <Route path={ROUTES.REGISTER} component={RegisterScreen} />
+
+        <PrivateRoute path={ROUTES.WELCOME} component={HomeScreen} />
+        <PrivateRoute path={ROUTES.CREATEQUIZ} component={CreateQuiz} />
+        <PrivateRoute path={ROUTES.CONSULTQUIZ} component={ConsultQuiz} />
 
       </Switch>
     </Router >
