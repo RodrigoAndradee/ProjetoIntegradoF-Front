@@ -1,14 +1,12 @@
 const homeScreen = {
-    marginLeft: "50px",
-    marginRight: "50px",
-    display: "flex",
-    paddingLeft: "50px"
-}
+  marginRight: "50px",
+  display: "flex",
+  paddingLeft: "50px",
+};
 
 const deviderStyle = {
-    marginLeft: "50px",
-    marginRight: "50px",
+  marginLeft: "50px",
+  marginRight: "50px",
+};
 
-}
-
-export default { homeScreen, deviderStyle }
+export default { homeScreen, deviderStyle };

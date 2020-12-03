@@ -9,8 +9,6 @@ import axios from "axios";
 import Styles from "./styles";
 
 export default function Login() {
-  // const [isLoged, setIsLoged] = useState(false);
-  // const [canLog, setCanLog] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,6 +22,12 @@ export default function Login() {
         password,
       })
       .then(function (response) {
+        let decode = JSON.stringify(response.data);
+        let a = JSON.parse(decode);
+        console.log(a.accessToken);
+        console.log(decode);
+        localStorage.setItem("token", a.accessToken);
+        localStorage.setItem("name", a.name);
         history.push("/home");
       })
       .catch(function (error) {
@@ -42,14 +46,6 @@ export default function Login() {
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
-
-  // const canLogin = () => {
-  //   console.log("entrou");
-  //   if (email && password) {
-  //     console.log("liberou senha");
-  //     setCanLog(false);
-  //   }
-  // };
 
   return (
     <>

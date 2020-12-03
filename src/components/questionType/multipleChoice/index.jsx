@@ -22,7 +22,6 @@ class multipleChoice extends React.Component {
     this.addQuestion = this.addQuestion.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleTitle = this.handleTitle.bind(this);
-
     this.generateJson = this.generateJson.bind(this);
     this.removeEntireQuestion = this.removeEntireQuestion.bind(this);
   }
