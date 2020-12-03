@@ -35,7 +35,7 @@ export default function Login() {
         setTimeout(() => {
           setSuccess(false);
           history.push("/home");
-        }, 1000);
+        }, 500);
       })
       .catch(function (error) {
         console.log(error);
@@ -92,9 +92,9 @@ export default function Login() {
           <Button style={Styles.buttonStyle1} onClick={callRegister}>
             Cadastrar
           </Button>
-          {success && <Alert severity="success">This is a success alert — check it out!</Alert>}
+          {success && <Alert severity="success">Logando</Alert>}
 
-          {fail && <Alert severity="error">This is an error alert — check it out!</Alert>}
+          {fail && <Alert severity="error">Algum erro ocorreu, Tente novamente</Alert>}
 
         </Card>
       </Box>

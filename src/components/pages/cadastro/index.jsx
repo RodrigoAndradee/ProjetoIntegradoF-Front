@@ -55,7 +55,7 @@ export default function RegisterScreen() {
                 setTimeout(() => {
                     setSuccess(false);
                     history.push("/home");
-                }, 1000);
+                }, 500);
 
             })
             .catch(function (error) {
@@ -112,9 +112,9 @@ export default function RegisterScreen() {
                     <Button style={Styles.buttonStyle} onClick={register}>
                         Cadastrar
                     </Button>
-                    {success && <Alert severity="success">This is a success alert — check it out!</Alert>}
+                    {success && <Alert severity="success"> Usuario cadastrado com sucesso</Alert>}
 
-                    {fail && <Alert severity="error">This is an error alert — check it out!</Alert>}
+                    {fail && <Alert severity="error">Algum erro ocorreu, Tente novamente</Alert>}
 
                 </Card>
 
