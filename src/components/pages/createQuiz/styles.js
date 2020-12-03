@@ -37,7 +37,6 @@ const sendButtom = {
   textDecoration: "none",
   color: "white",
   width: "100%",
-  bottom: 0,
 };
 
 const formTitle = {
