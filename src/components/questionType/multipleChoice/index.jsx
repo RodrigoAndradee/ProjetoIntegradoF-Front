@@ -51,11 +51,10 @@ class multipleChoice extends React.Component {
   }
 
   handleTitle(event) {
-    let titlee = event.target.value;
+    let title = event.target.value;
     this.setState({
-      title: titlee,
+      title: title,
     });
-    this.generateJson();
   }
 
   generateJson() {
@@ -96,10 +95,12 @@ class multipleChoice extends React.Component {
                   <Checkbox key={index} />
                   <TextField
                     label="Digite sua opção"
-                    type="text"
+                    // type="text"
                     onChange={(e) => this.handleChange(e, index)}
                     key={index}
                     style={Styles.textFieldChoice}
+                    margin="normal"
+                    variant="filled"
                   />
                   <DeleteForeverIcon
                     onClick={(e) => this.removeQuestion(componentes)}

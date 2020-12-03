@@ -3,19 +3,12 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-import {
-  Box,
-  Divider,
-  Card,
-  TextField,
-  Button,
-  Select,
-} from "@material-ui/core";
+import { Box, Divider, Card, TextField, Button } from "@material-ui/core";
 
 import Header from "../../header";
 
 import MultipleChoice from "../../questionType/multipleChoice";
-import Text from "../../questionType/multipleChoice";
+import Text from "../../questionType/text";
 
 import Styles from "./styles";
 
@@ -59,7 +52,14 @@ export default () => {
         key={questionId}
       />
     ),
-    text: <Text questionId={questionId} />,
+    text: (
+      <Text
+        sendJson={getJson}
+        questionId={questionId}
+        removeQuestion={removeQuestion}
+        key={questionId}
+      />
+    ),
   };
 
   const handleChangeTitle = (event) => {

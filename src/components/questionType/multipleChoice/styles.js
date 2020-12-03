@@ -1,6 +1,7 @@
 const multipleChoiceCard = {
   backgroundColor: "#EAEAEA",
   marginBottom: "20px",
+  padding: "15px",
 };
 
 const multipleChoiceContainer = {
@@ -16,7 +17,6 @@ const multipleChoiceTitle = {
 const textField = {
   width: "80%",
   marginBottom: "20px",
-  marginTop: "20px",
 };
 
 const textFieldChoice = {
