@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 
-import { Box, Card } from "@material-ui/core";
+import { Box, Card, Button } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
-import { DataGrid, GridOverlay } from "@material-ui/data-grid";
+import { DataGrid, GridOverlay, GridApi } from "@material-ui/data-grid";
 
 import Header from "../../header";
 
@@ -34,6 +34,48 @@ export default function ConsultQuiz() {
       headerName: "Qtd Respostas",
       width: 250,
     },
+    {
+      field: "",
+      headerName: "Edit Users",
+      width: 200,
+      renderCell: (params: CellParams) => {
+        const onClick = () => {
+          const api: GridApi = params.api;
+          const fields = api
+            .getAllColumns()
+            .map((c) => c.field)
+            .filter((c) => c !== "__check__" && !!c);
+          const thisRow = {};
+
+          fields.forEach((f) => {
+            thisRow[f] = params.getValue(f);
+          });
+          let newEmails = prompt("Digite os e-mails separados por vírgula");
+
+          if (newEmails) {
+            let url = URL + "/research";
+            let researchId = allTasks[thisRow.id - 1]._id;
+            let participants = newEmails.split(",");
+
+            console.log("Research ID:", researchId);
+
+            console.log("Participantes: ");
+            console.log(participants);
+
+            axios
+              .put(url, { participants, researchId })
+              .then(function (response) {
+                alert("E-mails adicionados com sucesso");
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          }
+        };
+
+        return <Button onClick={onClick}>Adicionar E-mails</Button>;
+      },
+    },
   ];
 
   const rows = [];
@@ -48,6 +90,7 @@ export default function ConsultQuiz() {
         taskDescription: allTasks[index].description,
         qtdParticipants: allTasks[index].participants.length,
         qtdResponses: 0,
+        researchId: allTasks[index]._id,
       });
     }
   };
@@ -55,9 +98,6 @@ export default function ConsultQuiz() {
   useEffect(() => {
     let token = localStorage.getItem("token");
     let url = URL + "/research?userId=" + token;
-
-    console.log(token);
-
     axios
       .get(url, {})
       .then(function (response) {
@@ -147,7 +187,7 @@ export default function ConsultQuiz() {
       {renderTable()}
       <Header />
 
-      <Box style={Styles.homeScreen}>
+      <Box style={Styles.title}>
         <h1>Visualizar Pesquisas</h1>
       </Box>
 

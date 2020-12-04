@@ -3,6 +3,11 @@ const mainCreateQuiz = {
   marginRight: "50px",
 };
 
+const textField = {
+  paddingTop: "20px",
+  marginBottom: "10px",
+};
+
 const boxCreateQuiz = {
   display: "flex",
 };
@@ -67,6 +72,7 @@ const formContent = {
 };
 
 export default {
+  textField,
   mainCreateQuiz,
   boxCreateQuiz,
   cardButtons,

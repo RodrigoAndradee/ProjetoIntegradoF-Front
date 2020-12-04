@@ -24,6 +24,7 @@ export default () => {
   const [questionToRender, setQuestionToRender] = useState([]);
   const [questionId, setQuestionId] = useState(0);
   const [showHint, setShowHint] = useState(true);
+  const [email, setEmail] = useState("");
 
   const getJson = (param) => {
     !questions.includes(param)
@@ -71,6 +72,10 @@ export default () => {
     setDescription(event.target.value);
   };
 
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
   const addQuestion = (typeQuestion) => {
     const typeOf = getComponent[typeQuestion];
 
@@ -88,18 +93,16 @@ export default () => {
   );
   const sendForm = () => {
     let token = localStorage.getItem("token");
+
+    let participants = email.split(",");
+
     axios
       .post(URL + "/research", {
         title,
         description,
         asks: questions,
         userId: token,
-        participants: [
-          "rodrigomachado161@gmail.com",
-          "rodrigo_machado96@hotmail.com",
-          "gabriel.talles00@gmail.com",
-          "nicolaubalbino@gmail.com",
-        ],
+        participants,
         endDate: "22/11/2020",
         active: true,
       })
@@ -130,6 +133,13 @@ export default () => {
                 type="text"
                 style={Styles.textField}
                 onChange={handleChangeDescription}
+              />
+              <TextField
+                label="Participantes da Pesquisa"
+                type="text"
+                style={Styles.textField}
+                onChange={handleChangeEmail}
+                helperText={"Separe os e-mails com , (vírgula) e sem espaços"}
               />
             </Box>
             <Box style={Styles.formContent}>
